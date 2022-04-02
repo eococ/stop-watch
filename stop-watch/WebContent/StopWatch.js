@@ -21,7 +21,6 @@
 			seconds = 0;
 		}
 		stopWatch = (minutes + ":" + seconds + ":" + ms);
-		console.log("지민 : " + stopWatch);
 		$("#stopWatchArea").html(stopWatch);
 		requestAnimationFrame(startStopWatch);
 		return stopWatch;
