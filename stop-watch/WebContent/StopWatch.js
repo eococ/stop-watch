@@ -4,8 +4,9 @@
 	var minutes = 0;
 	var stopWatch;
 	var startStopWatch;
+	var requestId;
 	
-	
+	//스톱워치
 	startStopWatch = function(){
 		ms++;
 		if(ms >= 10){
@@ -22,8 +23,24 @@
 		}
 		stopWatch = (minutes + ":" + seconds + ":" + ms);
 		$("#stopWatchArea").html(stopWatch);
-		requestAnimationFrame(startStopWatch);
-		return stopWatch;
+		requestId = requestAnimationFrame(startStopWatch);
 	};
+	
+	//스톱워치 일시정지
+	function stopStopWatch(){
+		cancelAnimationFrame(requestId);
+	};
+
+	//스톱워치 종료
+	function resetStopWatch(){
+		cancelAnimationFrame(startStopWatch);
+		ms = seconds = minutes = 0;
+		var time = (minutes + ":" + seconds + ":" + ms);
+		$("#stopWatchArea").html(time);
+	}
+	
+	
+	
+	
 	
 	
