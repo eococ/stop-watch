@@ -6,8 +6,14 @@
 	var startStopWatch;
 	var requestId;
 	
-	//스톱워치
-	startStopWatch = function(){
+	//수정사항
+	//id값 파라미터로 받거나 셀렉터로 받기
+	//전역변수값 this로 바꾸고
+	//description  
+	
+	
+	//스톱워치 시작
+	start = function(param){
 		ms++;
 		if(ms >= 10){
 			seconds++;
@@ -22,21 +28,21 @@
 			seconds = 0;
 		}
 		stopWatch = (minutes + ":" + seconds + ":" + ms);
-		$("#stopWatchArea").html(stopWatch);
-		requestId = requestAnimationFrame(startStopWatch);
+		$("#" + param).html(stopWatch);
+		requestId = requestAnimationFrame(start);
 	};
 	
 	//스톱워치 일시정지
-	function stopStopWatch(){
+	function pause(){
 		cancelAnimationFrame(requestId);
 	};
 
 	//스톱워치 종료
-	function resetStopWatch(){
-		cancelAnimationFrame(startStopWatch);
+	function stop(param){
+		cancelAnimationFrame(start);
 		ms = seconds = minutes = 0;
 		var time = (minutes + ":" + seconds + ":" + ms);
-		$("#stopWatchArea").html(time);
+		$("#" + param).html(time);
 	}
 	
 	
