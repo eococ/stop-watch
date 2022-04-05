@@ -5,15 +5,10 @@
 	var stopWatch;
 	var startStopWatch;
 	var requestId;
-	
-	//수정사항
-	//id값 파라미터로 받거나 셀렉터로 받기
-	//전역변수값 this로 바꾸고
-	//description  
-	
+
 	
 	//스톱워치 시작
-	start = function(param){
+	start = function(id){
 		ms++;
 		if(ms >= 10){
 			seconds++;
@@ -28,7 +23,7 @@
 			seconds = 0;
 		}
 		stopWatch = (minutes + ":" + seconds + ":" + ms);
-		$("#" + param).html(stopWatch);
+		$("#" + id).html(stopWatch);
 		requestId = requestAnimationFrame(start);
 	};
 	
@@ -38,13 +33,33 @@
 	};
 
 	//스톱워치 종료
-	function stop(param){
+	function stop(id){
 		cancelAnimationFrame(start);
 		ms = seconds = minutes = 0;
-		var time = (minutes + ":" + seconds + ":" + ms);
-		$("#" + param).html(time);
+		var time = minutes + ":" + seconds + ":" + ms;
+		$("#" + id).html(time);
 	}
 	
+	//현재 시간 가져오기
+	function getTime(){
+		var now = new Date();
+		var nowTime = now.getFullYear();
+		nowTime += '-' + (now.getMonth()+1);
+		nowTime += '-' + now.getDate();
+		nowTime += ' ' + now.getHours();
+		nowTime += ':' + now.getMinutes();
+		nowTime += ':' + now.getSeconds();
+	}
+	
+	//이벤트
+	$().on({
+		alarm : function () {
+			
+        },
+        update : function () {
+        	
+        }
+	});
 	
 	
 	
