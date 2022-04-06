@@ -35,9 +35,16 @@
 	//스톱워치 종료
 	function stop(id){
 		cancelAnimationFrame(start);
-		ms = seconds = minutes = 0;
+		reset();
 		var time = minutes + ":" + seconds + ":" + ms;
 		$("#" + id).html(time);
+	}
+	
+	//리셋
+	function reset(){
+		ms = 0;
+		seconds = 0;
+		minutes = 0;
 	}
 	
 	//현재 시간 가져오기
@@ -49,17 +56,9 @@
 		nowTime += ' ' + now.getHours();
 		nowTime += ':' + now.getMinutes();
 		nowTime += ':' + now.getSeconds();
+		
+		return nowTime;
 	}
-	
-	//이벤트
-	$().on({
-		alarm : function () {
-			
-        },
-        update : function () {
-        	
-        }
-	});
 	
 	
 	
