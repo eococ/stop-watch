@@ -1,7 +1,4 @@
 	
-	var ms = 0;
-	var seconds = 0;
-	var minutes = 0;
 	var stopWatch;
 	var startStopWatch;
 	var requestId;
@@ -9,6 +6,11 @@
 	
 	//스톱워치 시작
 	start = function(id){
+		
+		var ms = 0;
+		var seconds = 0;
+		var minutes = 0;
+		
 		ms++;
 		if(ms >= 10){
 			seconds++;
@@ -22,8 +24,6 @@
 		if(seconds == 60){
 			seconds = 0;
 		}
-		stopWatch = (minutes + ":" + seconds + ":" + ms);
-		$("#" + id).html(stopWatch);
 		requestId = requestAnimationFrame(start);
 	};
 	
@@ -40,8 +40,6 @@
 	function stop(id){
 		cancelAnimationFrame(start);
 		reset();
-		var time = minutes + ":" + seconds + ":" + ms;
-		$("#" + id).html(time);
 	}
 	
 	
@@ -106,8 +104,7 @@
 		var now = getTime();
 
 		if(now === setAlarm){
-			//알람 울림...... 어떻게 해야할지... 모르곘어요...
-			//..........ㅠ
+			//알람 울림...... 어ㄸ
 		}
 		
 	}
